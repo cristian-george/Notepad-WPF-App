@@ -9,22 +9,20 @@ namespace Notepad.ViewModel
 
         public TabCommands()
         {
-            Tabs = new ObservableCollection<Tab>()
-            {
-                new Tab() { Header = "File1.txt", Content = "" }
-            };
+            Tabs = new ObservableCollection<Tab>();
+            AddNewTab();
         }
 
         public static void AddNewTab()
         {
             int count = Tabs.Count + 1;
-            Tab tab = new Tab() { Header = "File" + count.ToString() + ".txt", Content = "" };
+            Tab tab = new Tab() { Header = "File" + count.ToString() + ".txt", Content = "", FilePath = "" };
             Tabs.Add(tab);
         }
 
-        public static void AddNewTab(string header, string content)
+        public static void AddNewTab(string header, string content, string filePath)
         {
-            Tab tab = new Tab() { Header = header, Content = content };
+            Tab tab = new Tab() { Header = header, Content = content, FilePath = filePath };
             Tabs.Add(tab);
         }
     }

@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
+using static Notepad.Model.DataProvider;
+using Notepad.View;
 
 namespace Notepad.ViewModel
 {
@@ -37,12 +39,15 @@ namespace Notepad.ViewModel
                 return;
 
             StreamReader streamReader = new StreamReader(File.OpenRead(openFile.FileName));
-            TabCommands.AddNewTab(openFile.SafeFileName, streamReader.ReadToEnd());
+            TabCommands.AddNewTab(openFile.SafeFileName, streamReader.ReadToEnd(), openFile.FileName);
             streamReader.Dispose();
         }
 
         public void SaveFile(object parameter)
         {
+            StreamWriter streamWriter = new StreamWriter(TabCommands.Tabs[1].FilePath);
+            streamWriter.Write(TabCommands.Tabs[1].Content);
+            streamWriter.Dispose();
         }
 
         public void SaveFileAs(object parameter)
@@ -66,18 +71,34 @@ namespace Notepad.ViewModel
 
         public void PerformFind(object parameter)
         {
+            if (FindWindowOn == true) return;
+            FindWindow findWindow = new FindWindow();
+            findWindow.Show();
+            FindWindowOn = true;
         }
 
         public void PerformReplace(object parameter)
         {
+            if (ReplaceWindowOn == true) return;
+            ReplaceWindow replaceWindow = new ReplaceWindow();
+            replaceWindow.Show();
+            ReplaceWindowOn = true;
         }
 
         public void PerformReplaceAll(object parameter)
         {
+            if (ReplaceAllWindowOn == true) return;
+            ReplaceAllWindow replaceAllWindow = new ReplaceAllWindow();
+            replaceAllWindow.Show();
+            ReplaceAllWindowOn = true;
         }
 
         public void AboutDisplay(object parameter)
         {
+            if (AboutWindowOn == true) return;
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.Show();
+            AboutWindowOn = true;
         }
 
         public ICommand New
