@@ -58,8 +58,12 @@
     </ApplicationDefinition>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\Tab.cs" />
+    <Compile Include="ViewModel\AboutCommands.cs" />
+    <Compile Include="ViewModel\FindCommands.cs" />
     <Compile Include="ViewModel\NotepadCommands.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ReplaceAllCommands.cs" />
+    <Compile Include="ViewModel\ReplaceCommands.cs" />
     <Compile Include="ViewModel\TabCommands.cs" />
     <Compile Include="View\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
@@ -128,7 +132,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Photo.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icon.png" />
   </ItemGroup>

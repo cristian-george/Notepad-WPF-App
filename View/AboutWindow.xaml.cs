@@ -14,5 +14,10 @@ namespace Notepad.View
         {
             AboutWindowOn = false;
         }
+
+        private void RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
     }
 }

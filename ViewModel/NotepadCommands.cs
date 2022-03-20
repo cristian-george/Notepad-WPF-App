@@ -33,14 +33,16 @@ namespace Notepad.ViewModel
                 Title = "Select a file",
                 Filter = "Text document (*.txt)|*.txt|All files (*.*)|*.*"
             };
-            openFile.ShowDialog();
 
-            if (openFile.FileName.CompareTo("") == 0)
-                return;
+            if (openFile.ShowDialog() == true)
+            {
+                string filePath = openFile.FileName;
+                string fileName = openFile.SafeFileName;
 
-            StreamReader streamReader = new StreamReader(File.OpenRead(openFile.FileName));
-            TabCommands.AddNewTab(openFile.SafeFileName, streamReader.ReadToEnd(), openFile.FileName);
-            streamReader.Dispose();
+                StreamReader streamReader = new StreamReader(File.OpenRead(filePath));
+                TabCommands.AddNewTab(fileName, streamReader.ReadToEnd(), filePath);
+                streamReader.Dispose();
+            }
         }
 
         public void SaveFile(object parameter)
