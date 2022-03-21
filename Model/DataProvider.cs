@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace Notepad.Model
+﻿namespace Notepad.Model
 {
     class DataProvider
     {
@@ -8,7 +6,5 @@ namespace Notepad.Model
         public static bool FindWindowOn { get; set; }
         public static bool ReplaceWindowOn { get; set; }
         public static bool ReplaceAllWindowOn { get; set; }
-
-        public static TabControl TabControl { get; set; }
     }
 }

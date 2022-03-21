@@ -1,10 +1,9 @@
 ﻿using Notepad.Model;
 using System.Collections.ObjectModel;
-using static Notepad.Model.DataProvider;
 
 namespace Notepad.ViewModel
 {
-    class TabCommands
+    class TabCommands : BaseViewModel
     {
         public static ObservableCollection<Tab> Tabs { get; set; }
         public static Tab SelectedTab { get; set; }
@@ -12,11 +11,11 @@ namespace Notepad.ViewModel
         public TabCommands()
         {
             Tabs = new ObservableCollection<Tab>();
-            AddNewTab();
+            AddNewFileTab();
         }
 
         private static int countUntitledFiles = 1;
-        public static void AddNewTab()
+        public static void AddNewFileTab()
         {
             AddNewTab("File" + countUntitledFiles.ToString() + ".txt");
             ++countUntitledFiles;
@@ -28,7 +27,8 @@ namespace Notepad.ViewModel
             {
                 Header = header,
                 Content = content,
-                FilePath = filePath
+                FilePath = filePath,
+                OldContent = content
             });
         }
 

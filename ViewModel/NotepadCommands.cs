@@ -17,13 +17,12 @@ namespace Notepad.ViewModel
 
         private ICommand m_find;
         private ICommand m_replace;
-        private ICommand m_replaceAll;
 
         private ICommand m_about;
 
         public void NewFile(object parameter)
         {
-            TabCommands.AddNewTab();
+            TabCommands.AddNewFileTab();
         }
 
         public void OpenFile(object parameter)
@@ -61,6 +60,7 @@ namespace Notepad.ViewModel
 
             string filePath = TabCommands.SelectedTab.FilePath;
             string fileContent = TabCommands.SelectedTab.Content;
+            TabCommands.SelectedTab.OldContent = fileContent;
 
             StreamWriter streamWriter = new StreamWriter(filePath);
             streamWriter.Write(fileContent);
@@ -109,14 +109,6 @@ namespace Notepad.ViewModel
             ReplaceWindow replaceWindow = new ReplaceWindow();
             replaceWindow.Show();
             ReplaceWindowOn = true;
-        }
-
-        public void PerformReplaceAll(object parameter)
-        {
-            if (ReplaceAllWindowOn == true) return;
-            ReplaceAllWindow replaceAllWindow = new ReplaceAllWindow();
-            replaceAllWindow.Show();
-            ReplaceAllWindowOn = true;
         }
 
         public void AboutDisplay(object parameter)
@@ -215,19 +207,6 @@ namespace Notepad.ViewModel
                 }
 
                 return m_replace;
-            }
-        }
-
-        public ICommand ReplaceAll
-        {
-            get
-            {
-                if (m_replaceAll == null)
-                {
-                    m_replaceAll = new RelayCommand(PerformReplaceAll);
-                }
-
-                return m_replaceAll;
             }
         }
 

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Closing="FindClosing"
         Title="Find"
-        Height="300"
+        Height="250"
         Width="400"
         Left="125"
         Top="125"
@@ -19,6 +19,49 @@
     </Window.DataContext>
 
     <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="String to find: "
+                   FontSize="15"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Height="30"
+                   VerticalAlignment="Top"/>
+        <TextBox Background="AliceBlue"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Height="25"
+                 FontSize="15"
+                 TextAlignment="Left"
+                 VerticalAlignment="Bottom"/>
+
+        <CheckBox Grid.Row="2"
+                  Grid.Column="1"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left">
+            <TextBlock Text="Find string in all opened files"
+                       FontSize="15"
+                       VerticalAlignment="Top"/>
+        </CheckBox>
+        <Button BorderBrush="MediumPurple"
+                BorderThickness="2"
+                Grid.Row="3"
+                Grid.Column="1"
+                Height="30"
+                Width="80">
+            <TextBlock Text="Apply"
+                       FontSize="15"/>
+        </Button>
     </Grid>
 </Window>

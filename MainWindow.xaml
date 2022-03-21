@@ -67,8 +67,6 @@
                           Command="{Binding Path=Find}"/>
                 <MenuItem Header="Replace"
                           Command="{Binding Path=Replace}"/>
-                <MenuItem Header="Replace all"
-                          Command="{Binding Path=ReplaceAll}"/>
             </MenuItem>
 
             <MenuItem Header="Help"
@@ -84,8 +82,8 @@
                     Grid.Row="1"
                     Grid.RowSpan="2"
                     Grid.Column="3"
-                    ItemsSource="{Binding Tabs}"
-                    SelectedItem="{Binding SelectedTab}">
+                    ItemsSource="{Binding Path=Tabs}"
+                    SelectedItem="{Binding Path=SelectedTab}">
 
             <TabControl.DataContext>
                 <local:TabCommands/>
@@ -94,12 +92,13 @@
             <TabControl.ItemTemplate>
                 <DataTemplate>
                     <DockPanel>
-                        <TextBlock Text="{Binding Header}"
+                        <TextBlock Text="{Binding Path=Header}"
                                    FontSize="15"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"/>
-                        <TextBlock x:Name="blankSpace"
-                                   Text="{Binding BlankSpace}"/>
+
+                        <TextBlock Text="{Binding Path=BlankSpace}"/>
+
                         <Image Source="Images\CloseButton.png"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
@@ -114,11 +113,11 @@
                 <DataTemplate>
                     <ScrollViewer VerticalScrollBarVisibility="Visible"
                                   HorizontalScrollBarVisibility="Visible">
-                        <TextBox Text="{Binding Content}"
-                             FontSize="14"
-                             AcceptsReturn="True"
-                             AcceptsTab="True"
-                             TextChanged="ContentChanged"/>
+                        <TextBox Text="{Binding Path=Content}"
+                                 FontSize="14"
+                                 AcceptsReturn="True"
+                                 AcceptsTab="True"
+                                 TextChanged="ContentChanged"/>
                     </ScrollViewer>
                 </DataTemplate>
             </TabControl.ContentTemplate>
@@ -127,7 +126,8 @@
         <TreeView x:Name="treeView"
                   Grid.Row="2"
                   Grid.Column="1"
-                  ItemsSource="{Binding Items}">
+                  ItemsSource="{Binding Path=Items}"
+                  MouseDoubleClick="OpenFileEvent">
 
             <TreeView.DataContext>
                 <local:DirectoryStructureCommands/>
@@ -135,19 +135,18 @@
 
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
                 </Style>
             </TreeView.ItemContainerStyle>
 
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
                     <StackPanel Orientation="Horizontal">
-                        <Image Width="20"
+                        <!--Image Width="20"
                                Margin="3"
-                               Source="{Binding ImageName, Converter={x:Static local:HeaderToImageConverter.Instance}}"/>
-
+                               Source="{Binding ImageName, Converter={x:Static local:HeaderToImageConverter.Instance}}"/-->
                         <TextBlock VerticalAlignment="Center"
-                                   Text="{Binding Name}"/>
+                                   Text="{Binding Path=Name}"/>
                     </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>

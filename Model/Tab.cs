@@ -5,8 +5,7 @@
         public string Header { get; set; }
         public string Content { get; set; }
         public string FilePath { get; set; }
-        public bool IsContentModified { get; set; } = false;
-
+        public string OldContent { get; set; }
         public string BlankSpace { get; set; } = "   ";
     }
 }

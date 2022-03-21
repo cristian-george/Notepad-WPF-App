@@ -1,6 +1,7 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using Microsoft.Win32;
 using Notepad.ViewModel;
-using static Notepad.Model.DataProvider;
 
 namespace Notepad
 {
@@ -9,8 +10,6 @@ namespace Notepad
         public MainWindow()
         {
             InitializeComponent();
-
-            TabControl = tabControl;
         }
 
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -23,6 +22,24 @@ namespace Notepad
         {
             if (tabControl.SelectedItem != null)
             {
+                Model.Tab tab = tabControl.SelectedItem as Model.Tab;
+                if (tab.OldContent != tab.Content)
+                {
+                    SaveFileDialog saveFile = new SaveFileDialog
+                    {
+                        FileName = tab.Header,
+                        Filter = "Text document (*.txt)|*.txt|All files (*.*)|*.*"
+                    };
+
+                    if (saveFile.ShowDialog() == true)
+                    {
+                        string filePath = saveFile.FileName;
+                        string fileContent = tab.Content;
+
+                        File.WriteAllText(filePath, fileContent);
+                    }
+                }
+
                 TabCommands.RemoveTab();
             }
         }
@@ -31,11 +48,30 @@ namespace Notepad
         {
             if (tabControl.SelectedItem != null)
             {
-                int selectedIndex = tabControl.SelectedIndex;
+                TabCommands.SelectedTab.Content = (sender as System.Windows.Controls.TextBox).Text;
 
-                TabCommands.Tabs[selectedIndex].BlankSpace = "*  ";
-                TabCommands.Tabs[selectedIndex].IsContentModified = true;
-                TabCommands.Tabs[selectedIndex].Content = (sender as System.Windows.Controls.TextBox).Text;
+                if (TabCommands.SelectedTab.OldContent != TabCommands.SelectedTab.Content)
+                {
+                    TabCommands.SelectedTab.BlankSpace = "*  ";
+                }
+                else
+                {
+                    TabCommands.SelectedTab.BlankSpace = "   ";
+                }
+            }
+        }
+
+        private void OpenFileEvent(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (treeView.SelectedItem != null)
+            {
+                DirectoryItemCommands directoryItem = treeView.SelectedItem as DirectoryItemCommands;
+                if (directoryItem.Type == Model.DirectoryItemType.File)
+                {
+                    StreamReader streamReader = new StreamReader(File.OpenRead(directoryItem.FullPath));
+                    TabCommands.AddNewTab(directoryItem.Name, streamReader.ReadToEnd(), directoryItem.FullPath);
+                    streamReader.Dispose();
+                }
             }
         }
     }

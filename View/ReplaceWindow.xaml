@@ -19,6 +19,74 @@
     </Window.DataContext>
 
     <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
 
+        <TextBlock Text="String to find:"
+                   FontSize="15"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Height="30"
+                   VerticalAlignment="Top"/>
+        <TextBox Background="AliceBlue"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Height="25"
+                 FontSize="15"
+                 TextAlignment="Left"
+                 VerticalAlignment="Bottom"/>
+
+        <TextBlock Text="Replace string with:"
+                   FontSize="15"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Height="30"
+                   VerticalAlignment="Top"/>
+        <TextBox Background="AliceBlue"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Height="25"
+                 FontSize="15"
+                 TextAlignment="Center"
+                 VerticalAlignment="Bottom"/>
+
+        <CheckBox Grid.Row="3"
+                  Grid.Column="1"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Left"
+                  Margin="0,12.8,0,0">
+            <TextBlock Text="Replace all"
+                       FontSize="15"/>
+        </CheckBox>
+
+        <CheckBox Grid.Row="3"
+                  Grid.Column="1"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Left">
+            <TextBlock Text="Find and replace string in all opened files"
+                       FontSize="15"
+                       VerticalAlignment="Top"/>
+        </CheckBox>
+
+        <Button BorderBrush="MediumPurple"
+                BorderThickness="2"
+                Grid.Row="4"
+                Grid.Column="1"
+                Height="30"
+                Width="80">
+            <TextBlock Text="Apply"
+                       FontSize="15"/>
+        </Button>
     </Grid>
 </Window>

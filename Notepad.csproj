@@ -73,7 +73,6 @@
     <Compile Include="ViewModel\HeaderToImageConverter.cs" />
     <Compile Include="ViewModel\NotepadCommands.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\ReplaceAllCommands.cs" />
     <Compile Include="ViewModel\ReplaceCommands.cs" />
     <Compile Include="ViewModel\TabCommands.cs" />
     <Compile Include="View\AboutWindow.xaml.cs">
@@ -81,9 +80,6 @@
     </Compile>
     <Compile Include="View\FindWindow.xaml.cs">
       <DependentUpon>FindWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ReplaceAllWindow.xaml.cs">
-      <DependentUpon>ReplaceAllWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ReplaceWindow.xaml.cs">
       <DependentUpon>ReplaceWindow.xaml</DependentUpon>
@@ -105,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FindWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ReplaceAllWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
