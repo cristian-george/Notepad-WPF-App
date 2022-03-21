@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad.ViewModel"
         mc:Ignorable="d"
+        Closing="WindowClosing"
         Title="Notepad++"
         Height="600"
         Width="800"
@@ -17,19 +18,21 @@
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
 
         <Menu Background="MediumPurple"
               Grid.Row="0"
-              Grid.ColumnSpan="4"
+              Grid.ColumnSpan="5"
               FontSize="14">
 
             <Menu.DataContext>
@@ -79,8 +82,10 @@
         <TabControl x:Name="tabControl"
                     Background="LightGray"
                     Grid.Row="1"
-                    Grid.Column="2"
-                    ItemsSource="{Binding Tabs}">
+                    Grid.RowSpan="2"
+                    Grid.Column="3"
+                    ItemsSource="{Binding Tabs}"
+                    SelectedItem="{Binding SelectedTab}">
 
             <TabControl.DataContext>
                 <local:TabCommands/>
@@ -88,20 +93,64 @@
 
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Header}"
-                               MinWidth="50"
-                               FontSize="14"
-                               TextAlignment="Center"/>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Header}"
+                                   FontSize="15"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"/>
+                        <TextBlock x:Name="blankSpace"
+                                   Text="{Binding BlankSpace}"/>
+                        <Image Source="Images\CloseButton.png"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               Width="20"
+                               Height="20"
+                               MouseUp="CloseTab"/>
+                    </DockPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
 
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <TextBox Text="{Binding Content}"
+                    <ScrollViewer VerticalScrollBarVisibility="Visible"
+                                  HorizontalScrollBarVisibility="Visible">
+                        <TextBox Text="{Binding Content}"
                              FontSize="14"
-                             TextWrapping="Wrap"/>
+                             AcceptsReturn="True"
+                             AcceptsTab="True"
+                             TextChanged="ContentChanged"/>
+                    </ScrollViewer>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
+
+        <TreeView x:Name="treeView"
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  ItemsSource="{Binding Items}">
+
+            <TreeView.DataContext>
+                <local:DirectoryStructureCommands/>
+            </TreeView.DataContext>
+
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20"
+                               Margin="3"
+                               Source="{Binding ImageName, Converter={x:Static local:HeaderToImageConverter.Instance}}"/>
+
+                        <TextBlock VerticalAlignment="Center"
+                                   Text="{Binding Name}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </Grid>
 </Window>

@@ -5,23 +5,23 @@ namespace Notepad.ViewModel
 {
     class RelayCommand : ICommand
     {
-        private readonly Action<object> m_commandTask;
+        private readonly Action<object> commandTask;
 
         public RelayCommand(Action<object> workToDo)
         {
-            m_commandTask = workToDo;
+            commandTask = workToDo;
         }
-
-        public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
             return true;
         }
 
+        public event EventHandler CanExecuteChanged = (sender, e) => { };
+
         public void Execute(object parameter)
         {
-            m_commandTask(parameter);
+            commandTask(parameter);
         }
     }
 }

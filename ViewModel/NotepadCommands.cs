@@ -1,13 +1,13 @@
 ﻿using Microsoft.Win32;
-using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
 using static Notepad.Model.DataProvider;
 using Notepad.View;
+using System.Windows;
 
 namespace Notepad.ViewModel
 {
-    class NotepadCommands : INotifyPropertyChanged
+    class NotepadCommands : BaseViewModel
     {
         private ICommand m_newFile;
         private ICommand m_openFile;
@@ -47,22 +47,46 @@ namespace Notepad.ViewModel
 
         public void SaveFile(object parameter)
         {
-            StreamWriter streamWriter = new StreamWriter(TabCommands.Tabs[1].FilePath);
-            streamWriter.Write(TabCommands.Tabs[1].Content);
+            if (TabCommands.SelectedTab == null)
+            {
+                MessageBox.Show("There is no file to save.");
+                return;
+            }
+
+            if (TabCommands.SelectedTab.FilePath.CompareTo("") == 0)
+            {
+                MessageBox.Show("There is no path to this file.");
+                return;
+            }
+
+            string filePath = TabCommands.SelectedTab.FilePath;
+            string fileContent = TabCommands.SelectedTab.Content;
+
+            StreamWriter streamWriter = new StreamWriter(filePath);
+            streamWriter.Write(fileContent);
             streamWriter.Dispose();
         }
 
         public void SaveFileAs(object parameter)
         {
+            if (TabCommands.SelectedTab == null)
+            {
+                MessageBox.Show("There is no file to save.");
+                return;
+            }
+
             SaveFileDialog saveFile = new SaveFileDialog
             {
-                FileName = "file.txt",
+                FileName = TabCommands.SelectedTab.Header,
                 Filter = "Text document (*.txt)|*.txt|All files (*.*)|*.*"
             };
 
             if (saveFile.ShowDialog() == true)
             {
-                File.WriteAllText(saveFile.FileName, TabCommands.Tabs[1].Content);
+                string filePath = saveFile.FileName;
+                string fileContent = TabCommands.SelectedTab.Content;
+
+                File.WriteAllText(filePath, fileContent);
             }
         }
 
@@ -218,13 +242,6 @@ namespace Notepad.ViewModel
 
                 return m_about;
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
