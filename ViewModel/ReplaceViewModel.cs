@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Notepad.ViewModel
 {
-    class ReplaceCommands
+    class ReplaceViewModel
     {
     }
 }

@@ -15,7 +15,7 @@
         Icon="..\Images\Icon.png">
 
     <Window.DataContext>
-        <local:FindCommands/>
+        <local:FindViewModel/>
     </Window.DataContext>
 
     <Grid Background="LightGray">

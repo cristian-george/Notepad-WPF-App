@@ -15,7 +15,7 @@
         Icon="..\Images\Icon.png">
 
     <Window.DataContext>
-        <local:ReplaceCommands/>
+        <local:ReplaceViewModel/>
     </Window.DataContext>
 
     <Grid Background="LightGray">

@@ -5,8 +5,8 @@ namespace Notepad.ViewModel
 {
     class TabCommands : BaseViewModel
     {
-        public static ObservableCollection<Tab> Tabs { get; set; }
-        public static Tab SelectedTab { get; set; }
+        public ObservableCollection<Tab> Tabs { get; set; }
+        public Tab SelectedTab { get; set; }
 
         public TabCommands()
         {
@@ -14,25 +14,29 @@ namespace Notepad.ViewModel
             AddNewFileTab();
         }
 
-        private static int countUntitledFiles = 1;
-        public static void AddNewFileTab()
+        private int countUntitledFiles = 1;
+
+        public void AddNewFileTab()
         {
             AddNewTab("File" + countUntitledFiles.ToString() + ".txt");
             ++countUntitledFiles;
         }
 
-        public static void AddNewTab(string header, string content = "", string filePath = "")
+        public void AddNewTab(string header, string content = "", string filePath = "")
         {
-            Tabs.Add(new Tab()
+            Tab tab = new Tab()
             {
                 Header = header,
                 Content = content,
                 FilePath = filePath,
                 OldContent = content
-            });
+            };
+
+            Tabs.Add(tab);
+            SelectedTab = tab;
         }
 
-        public static void RemoveTab()
+        public void RemoveTab()
         {
             Tabs.Remove(SelectedTab);
         }

@@ -62,19 +62,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\MenuCommands.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\DirectoryItem.cs" />
     <Compile Include="Model\DirectoryStructure.cs" />
     <Compile Include="Model\Tab.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\DirectoryItemCommands.cs" />
-    <Compile Include="ViewModel\DirectoryStructureCommands.cs" />
-    <Compile Include="ViewModel\FindCommands.cs" />
-    <Compile Include="ViewModel\HeaderToImageConverter.cs" />
-    <Compile Include="ViewModel\NotepadCommands.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\ReplaceCommands.cs" />
-    <Compile Include="ViewModel\TabCommands.cs" />
+    <Compile Include="Commands\DirectoryItemCommands.cs" />
+    <Compile Include="Commands\DirectoryStructureCommands.cs" />
+    <Compile Include="ViewModel\FindViewModel.cs" />
+    <Compile Include="Utilities\HeaderToImageConverter.cs" />
+    <Compile Include="ViewModel\NotepadViewModel.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="ViewModel\ReplaceViewModel.cs" />
+    <Compile Include="Commands\TabCommands.cs" />
     <Compile Include="View\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
@@ -84,7 +85,7 @@
     <Compile Include="View\ReplaceWindow.xaml.cs">
       <DependentUpon>ReplaceWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\NotepadWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -92,8 +93,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\NotepadWindow.xaml.cs">
+      <DependentUpon>NotepadWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AboutWindow.xaml">
@@ -152,12 +153,12 @@
     <Resource Include="Images\TreeViewImages\folder-open.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('packages\Fody.6.5.1\build\Fody.targets')" />
+  <Import Project="packages\Fody.6.6.0\build\Fody.targets" Condition="Exists('packages\Fody.6.6.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.5.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('packages\Fody.6.6.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.6.0\build\Fody.targets'))" />
     <Error Condition="!Exists('packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\PropertyChanged.Fody.3.4.0\build\PropertyChanged.Fody.props'))" />
   </Target>
 </Project>

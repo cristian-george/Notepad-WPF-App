@@ -1,6 +1,6 @@
 ﻿namespace Notepad.Model
 {
-    class Tab
+    class Tab : ViewModel.BaseViewModel
     {
         public string Header { get; set; }
         public string Content { get; set; }
