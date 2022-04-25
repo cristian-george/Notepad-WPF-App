@@ -38,7 +38,8 @@
                    Grid.Column="1"
                    Height="30"
                    VerticalAlignment="Top"/>
-        <TextBox Background="AliceBlue"
+        <TextBox x:Name="textBox"
+                 Background="AliceBlue"
                  Grid.Row="1"
                  Grid.Column="1"
                  Height="25"
@@ -49,8 +50,9 @@
         <CheckBox Grid.Row="2"
                   Grid.Column="1"
                   VerticalAlignment="Center"
-                  HorizontalAlignment="Left">
-            <TextBlock Text="Find string in all opened files"
+                  HorizontalAlignment="Left"
+                  Checked="CheckBox_Checked">
+            <TextBlock Text="Find string in whole document"
                        FontSize="15"
                        VerticalAlignment="Top"/>
         </CheckBox>
@@ -59,7 +61,8 @@
                 Grid.Row="3"
                 Grid.Column="1"
                 Height="30"
-                Width="80">
+                Width="80"
+                Click="FindButton">
             <TextBlock Text="Apply"
                        FontSize="15"/>
         </Button>

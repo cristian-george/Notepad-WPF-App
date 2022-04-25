@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using Notepad.Commands;
 using Notepad.Model;
 using System.IO;
 

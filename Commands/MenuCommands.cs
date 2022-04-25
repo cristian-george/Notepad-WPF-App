@@ -1,12 +1,11 @@
 ﻿using Microsoft.Win32;
 using Notepad.View;
-using Notepad.ViewModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using static Notepad.Model.DataProvider;
 
-namespace Notepad.Commands
+namespace Notepad.ViewModel
 {
     internal class MenuCommands : BaseViewModel
     {
@@ -198,7 +197,7 @@ namespace Notepad.Commands
         public void PerformFind(object parameter)
         {
             if (FindWindowOn == true) return;
-            FindWindow findWindow = new FindWindow();
+            FindWindow findWindow = new FindWindow(tabCommands);
             findWindow.Show();
             FindWindowOn = true;
         }

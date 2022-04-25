@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="PropertyChanged, Version=3.4.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>packages\PropertyChanged.Fody.3.4.0\lib\net40\PropertyChanged.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
     <Compile Include="Model\DirectoryItem.cs" />
     <Compile Include="Model\DirectoryStructure.cs" />
     <Compile Include="Model\Tab.cs" />
+    <Compile Include="Utilities\TextBoxSelectionBehavior.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Commands\DirectoryItemCommands.cs" />
     <Compile Include="Commands\DirectoryStructureCommands.cs" />

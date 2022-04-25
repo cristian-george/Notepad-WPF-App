@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         Closing="WindowClosing"
         Title="Notepad++"
@@ -111,7 +112,12 @@
                                  FontSize="14"
                                  AcceptsReturn="True"
                                  AcceptsTab="True"
-                                 TextChanged="ContentChanged"/>
+                                 TextChanged="ContentChanged">
+                            <i:Interaction.Behaviors>
+                                <local:TextBoxSelectionBehavior SelectedText="{Binding WordToFind}"/>
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+
                     </ScrollViewer>
                 </DataTemplate>
             </TabControl.ContentTemplate>

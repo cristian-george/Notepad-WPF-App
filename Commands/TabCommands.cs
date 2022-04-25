@@ -38,7 +38,8 @@ namespace Notepad.ViewModel
 
         public void RemoveTab()
         {
-            Tabs.Remove(SelectedTab);
+            int index = Tabs.IndexOf(SelectedTab);
+            Tabs.RemoveAt(index);
         }
     }
 }
