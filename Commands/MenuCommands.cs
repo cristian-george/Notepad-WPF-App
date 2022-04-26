@@ -221,7 +221,7 @@ namespace Notepad.ViewModel
         public void PerformReplace(object parameter)
         {
             if (ReplaceWindowOn == true) return;
-            ReplaceWindow replaceWindow = new ReplaceWindow();
+            ReplaceWindow replaceWindow = new ReplaceWindow(tabCommands);
             replaceWindow.Show();
             ReplaceWindowOn = true;
         }

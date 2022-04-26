@@ -39,7 +39,8 @@
                    Grid.Column="1"
                    Height="30"
                    VerticalAlignment="Top"/>
-        <TextBox Background="AliceBlue"
+        <TextBox x:Name="textBoxFind"
+                 Background="AliceBlue"
                  Grid.Row="1"
                  Grid.Column="1"
                  Height="25"
@@ -53,15 +54,17 @@
                    Grid.Column="1"
                    Height="30"
                    VerticalAlignment="Top"/>
-        <TextBox Background="AliceBlue"
+        <TextBox x:Name="textBoxReplace"
+                 Background="AliceBlue"
                  Grid.Row="2"
                  Grid.Column="1"
                  Height="25"
                  FontSize="15"
-                 TextAlignment="Center"
+                 TextAlignment="Left"
                  VerticalAlignment="Bottom"/>
 
-        <CheckBox Grid.Row="3"
+        <CheckBox x:Name="replaceAll"
+                  Grid.Row="3"
                   Grid.Column="1"
                   VerticalAlignment="Top"
                   HorizontalAlignment="Left"
@@ -70,7 +73,8 @@
                        FontSize="15"/>
         </CheckBox>
 
-        <CheckBox Grid.Row="3"
+        <CheckBox x:Name="replaceInOpenedFiles"
+                  Grid.Row="3"
                   Grid.Column="1"
                   VerticalAlignment="Bottom"
                   HorizontalAlignment="Left">
@@ -84,7 +88,8 @@
                 Grid.Row="4"
                 Grid.Column="1"
                 Height="30"
-                Width="80">
+                Width="80"
+                Click="ReplaceButton">
             <TextBlock Text="Apply"
                        FontSize="15"/>
         </Button>

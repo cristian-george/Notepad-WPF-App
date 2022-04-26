@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Closing="FindClosing"
         Title="Find"
-        Height="250"
+        Height="200"
         Width="400"
         Left="125"
         Top="125"
@@ -21,8 +21,7 @@
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -37,7 +36,8 @@
                    Grid.Row="1"
                    Grid.Column="1"
                    Height="30"
-                   VerticalAlignment="Top"/>
+                   VerticalAlignment="Top"
+                   Margin="10,10,0,0"/>
         <TextBox x:Name="textBox"
                  Background="AliceBlue"
                  Grid.Row="1"
@@ -45,20 +45,12 @@
                  Height="25"
                  FontSize="15"
                  TextAlignment="Left"
-                 VerticalAlignment="Bottom"/>
+                 VerticalAlignment="Bottom"
+                 Margin="0,0,0,20"/>
 
-        <CheckBox Grid.Row="2"
-                  Grid.Column="1"
-                  VerticalAlignment="Center"
-                  HorizontalAlignment="Left"
-                  Checked="CheckBox_Checked">
-            <TextBlock Text="Find string in whole document"
-                       FontSize="15"
-                       VerticalAlignment="Top"/>
-        </CheckBox>
         <Button BorderBrush="MediumPurple"
                 BorderThickness="2"
-                Grid.Row="3"
+                Grid.Row="2"
                 Grid.Column="1"
                 Height="30"
                 Width="80"

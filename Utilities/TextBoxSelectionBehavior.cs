@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using static Notepad.Model.DataProvider;
 
 namespace Notepad.ViewModel
 {
@@ -42,17 +43,20 @@ namespace Notepad.ViewModel
 
         private static void OnSelectedTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var behavior = d as TextBoxSelectionBehavior;
-            if (behavior.AssociatedObject == null || behavior.SelectedText == null)
-                return;
-
-            var currentText = behavior.AssociatedObject.Text;
-            var start = currentText.IndexOf(behavior.SelectedText);
-            if (start >= 0)
+            if (FindWindowOn == true)
             {
-                behavior.AssociatedObject.SelectionBrush = Brushes.Blue;
-                behavior.AssociatedObject.Select(start, behavior.SelectedText.Length);
-                behavior.AssociatedObject.Focus();
+                var behavior = d as TextBoxSelectionBehavior;
+                if (behavior.AssociatedObject == null || behavior.SelectedText == null)
+                    return;
+
+                var currentText = behavior.AssociatedObject.Text;
+                var start = currentText.IndexOf(behavior.SelectedText);
+                if (start >= 0)
+                {
+                    behavior.AssociatedObject.SelectionBrush = Brushes.Blue;
+                    behavior.AssociatedObject.Select(start, behavior.SelectedText.Length);
+                    behavior.AssociatedObject.Focus();
+                }
             }
         }
     }

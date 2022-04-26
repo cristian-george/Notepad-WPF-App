@@ -22,10 +22,5 @@ namespace Notepad.View
         {
             tabsCommands.SelectedTab.WordToFind = textBox.Text;
         }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
