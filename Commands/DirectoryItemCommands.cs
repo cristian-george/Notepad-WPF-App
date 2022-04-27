@@ -1,6 +1,5 @@
 ﻿using Notepad.Model;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 

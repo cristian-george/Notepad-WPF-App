@@ -8,13 +8,13 @@ namespace Notepad.ViewModel
     {
         public MenuCommands menuCommands;
         public TabCommands tabCommands;
-        public DirectoryStructureCommands directoryCommands;
+        public DirectoryStructureViewModel directoryCommands;
 
         public NotepadViewModel()
         {
             tabCommands = new TabCommands();
             menuCommands = new MenuCommands(tabCommands);
-            directoryCommands = new DirectoryStructureCommands();
+            directoryCommands = new DirectoryStructureViewModel();
         }
 
         public void CloseTab()

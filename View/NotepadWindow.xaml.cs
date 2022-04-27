@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using Notepad.ViewModel;
 
 namespace Notepad.View

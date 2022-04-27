@@ -73,7 +73,7 @@
     <Compile Include="Utilities\TextBoxSelectionBehavior.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Commands\DirectoryItemCommands.cs" />
-    <Compile Include="Commands\DirectoryStructureCommands.cs" />
+    <Compile Include="ViewModel\DirectoryStructureViewModel.cs" />
     <Compile Include="ViewModel\FindViewModel.cs" />
     <Compile Include="Utilities\HeaderToImageConverter.cs" />
     <Compile Include="ViewModel\NotepadViewModel.cs" />

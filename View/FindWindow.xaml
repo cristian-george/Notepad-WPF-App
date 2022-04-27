@@ -14,10 +14,6 @@
         ResizeMode="NoResize"
         Icon="..\Images\Icon.png">
 
-    <Window.DataContext>
-        <local:FindViewModel/>
-    </Window.DataContext>
-
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -37,7 +33,7 @@
                    Grid.Column="1"
                    Height="30"
                    VerticalAlignment="Top"
-                   Margin="10,10,0,0"/>
+                   Margin="0,10,0,0"/>
         <TextBox x:Name="textBox"
                  Background="AliceBlue"
                  Grid.Row="1"

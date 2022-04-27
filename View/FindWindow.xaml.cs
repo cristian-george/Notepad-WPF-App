@@ -6,11 +6,13 @@ namespace Notepad.View
 {
     public partial class FindWindow : Window
     {
-        private TabCommands tabsCommands;
+        private readonly FindViewModel viewModel;
+
         public FindWindow(object dataContext)
         {
             InitializeComponent();
-            tabsCommands = dataContext as TabCommands;
+            viewModel = new FindViewModel(dataContext);
+            DataContext = viewModel;
         }
 
         private void FindClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -20,7 +22,7 @@ namespace Notepad.View
 
         private void FindButton(object sender, RoutedEventArgs e)
         {
-            tabsCommands.SelectedTab.WordToFind = textBox.Text;
+            viewModel.SetWordToFind(textBox.Text);
         }
     }
 }

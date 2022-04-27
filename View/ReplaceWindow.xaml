@@ -14,10 +14,6 @@
         ResizeMode="NoResize"
         Icon="..\Images\Icon.png">
 
-    <Window.DataContext>
-        <local:ReplaceViewModel/>
-    </Window.DataContext>
-
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>

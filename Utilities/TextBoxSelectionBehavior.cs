@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xaml.Behaviors;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using static Notepad.Model.DataProvider;
 
 namespace Notepad.ViewModel
@@ -53,7 +52,6 @@ namespace Notepad.ViewModel
                 var start = currentText.IndexOf(behavior.SelectedText);
                 if (start >= 0)
                 {
-                    behavior.AssociatedObject.SelectionBrush = Brushes.Blue;
                     behavior.AssociatedObject.Select(start, behavior.SelectedText.Length);
                     behavior.AssociatedObject.Focus();
                 }

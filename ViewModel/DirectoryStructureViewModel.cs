@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Notepad.ViewModel
 {
-    public class DirectoryStructureCommands : BaseViewModel
+    public class DirectoryStructureViewModel : BaseViewModel
     {
         public ObservableCollection<DirectoryItemCommands> Items { get; set; }
 
-        public DirectoryStructureCommands()
+        public DirectoryStructureViewModel()
         {
             var children = DirectoryStructure.GetLogicalDrives();
             Items = new ObservableCollection<DirectoryItemCommands>(
